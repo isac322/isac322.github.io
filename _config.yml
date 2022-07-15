@@ -168,8 +168,8 @@ content:
         quote: >
           Linux 머신에 Kubernetes 설치 이후부터 GitOps 기반 클러스터 구축하고 운영하는 프로젝트
         description: |
-          - 프로덕션급의 스택을 가진 Kubernetes cluster를 바닥부터 구축 & 운영하는 경험을위해 작업
-            - 인프라를 구성하고 자동 운영 상태를 만드는것이 주목적
+          - 프로덕션급의 스택을 가진 Kubernetes cluster를 바닥부터 구축 & 운영하는 경험을 위해 작업
+            - 인프라를 구성하고 자동 운영 상태를 만드는 것이 주목적
             - [github.com/khuedoan/homelab](https://github.com/khuedoan/homelab)과 같은 homelab 프로젝트들 참고
           - 현재도 해당 repository 기반 GitOps로 클러스터 운영중
           - 아래의 서버가 실제로 동작 중 (FYI. 웹 UI가 있는 서버들은 아닙니다)
