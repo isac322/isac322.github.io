@@ -217,8 +217,8 @@ content:
         description: |
           - 회사에서 Eventloop 쓰로틀링 문제 경험 후 문제 예방을 위해 개발하게 됨
           - asyncio 기반 프로그램을 실행할 때 아래 상황을 모니터링할 수 있음
-            - blocking 함수가 async 함수 내부에서 실행된 경우
-            - 너무 많은 async 함수가 호출됨
+            - blocking 함수가 async 함수 내부에서 실행되는 상황
+            - 너무 많은 async 함수가 호출되는 상항
 
       - layout: top-middle
         title: Linux 자동 환경 구축 스크립트
@@ -253,7 +253,7 @@ content:
         quote: >
           Baekjoon Online Judge에 제출한 코드 다운로드 툴
         description: |
-          - 맞은 코드를 모아서 기록하는것을 자동화 하고자 만든 툴
+          - 맞은 코드를 모아서 기록하는 것을 자동화 하고자 만든 툴
 
   - title: Skills
     layout: list # Type of content section (list/text)
