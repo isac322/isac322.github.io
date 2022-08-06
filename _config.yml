@@ -162,12 +162,12 @@ content:
       - layout: top-middle
         title: <a name="homelab"></a>homelab (Kubernetes cluster)
         additional_links:
+          - title: blog
+            icon: fas fa-blog
+            url: velog.io/@isac322/homelab-구축-1
           - title: repository
             icon: fab fa-github
             url: github.com/isac322/homelab
-          - title: blog
-            icon: fab fa-blog
-            url: velog.io/@isac322/homelab-구축-1
         quote: >
           Linux 머신에 Kubernetes 설치 이후부터 GitOps 기반 클러스터 구축하고 운영하는 프로젝트
         description: |
