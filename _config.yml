@@ -217,6 +217,14 @@ content:
           - [기존 플러그인](https://github.com/vchaptsev/flake8-keyword-arguments)이 false alarm 문제가 있어서 개발
           - 정적 분석으로 파라미터가 여러개일 때 가독성을 위해 positional argument 대신 keyword argument를 사용하도록 가이드
 
+  - title: 외부 활동
+    layout: list # Type of content section (list/text)
+    content:
+      - layout: left
+        title: 발표
+        description: |
+          - [PyCon 2022 - Type it!](https://2022.pycon.kr/program/talks/6)
+
   - title: Skills
     layout: list # Type of content section (list/text)
     content:
