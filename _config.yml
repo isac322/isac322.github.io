@@ -48,26 +48,37 @@ about_title: 소개
 about_profile_image: images/profile.png
 about_content: | # this will include new lines to allow paragraphs
   DDD를 통한 도메인 정의와 빠른 문제 해결에 관심이 있는 서버 개발자입니다.  
-  현재 업무적으로는 __초당 광고 할당 2,400__ 이상의 DSP(광고 할당 서버)와 광고 소진제어 시스템을 구축 및 운영하고 있고,
-  사내에서 DDD와 파이썬러버로써 <mark>팀을 넘어</mark> 지식 공유와 기술 도입에 노력하고 있습니다.  
   팀 간 __도메인 분리&정제__ 가 빠른 문제 해결과 적은 기술 부채의 핵심이라고 생각합니다.
   비즈니스 목표와 기술 부채 해결의 타협점을 찾기 위해서 빠르게 움직일 수 없도록 만드는 시스템을 찾고 개선하는 것을 즐깁니다.  
   좋은 개발자란 빠르고 기술적으로 올바르게 문제를 해결하는 사람이라 생각하기 때문에
   <mark>팀의 목표</mark>에 따라서 기술 부채를 의도하기도, 변경에 유연한 시스템을 디자인하기도 합니다.  
-  현재 커리어 관심사는 팀 토폴로지의 Enabling team 역할과 EDA, 마이크로 서비스 간 Transaction입니다.
+  현재 커리어 관심사는 팀 토폴로지의 Enabling team 역할입니다.  
+  업무 이외에도 Linux와 오픈 소스에 관심이 있어서 [AUR에 패키지 관리](https://aur.archlinux.org/account/bhyoo)를 하거나, 만든 프로젝트를 github에 공유하기도 합니다.
 
 content:
   - title: 경력
     layout: list # Type of content section (list/text)
     content:
       - layout: left
+        title: AB180
+        link: https://www.ab180.co
+        link_text: ab180.co
+        sub_title: Backend Engineer
+        caption: 2022.10 ~ 현재
+        quote: >
+          초당 트래킹 22,800+의 광고 성과 분석 솔루션
+        description: |
+          - 트래킹 서버 운영 & 유지보수
+          - 배포, 개발 환경, 성능 최적화 등 팀 범위의 기술 도입 및 지식 공유
+
+      - layout: left
         title: Buzzvil
         link: https://www.buzzvil.com
         link_text: buzzvil.com
         sub_title: Software Engineer
-        caption: 2019.09 ~ 현재
+        caption: 2019.09 ~ 2022.10
         quote: >
-          MAU 2,000만+, 초당 광고 할당 2,400+의 리워드 광고 회사
+          MAU 2,000만+, 초당 광고 할당 3,000+의 리워드 광고 회사
         description: |
           - Golang으로 DSP (광고 할당 서버) 구축 및 Ad Exchange 연동
           - DSP 운영 & 유지보수
@@ -81,50 +92,49 @@ content:
       - layout: left
         title: 도메인 분리 & 정제
         description: |
-          - Python 모노리스 광고 서버로부터 광고 할당 도메인 전체를 Golang 마이크로 서비스로 분리
-          - 모노리스 광고 서버에 모듈러 모노리스를 기반으로한 도메인 분리 제안 후 리팩토링
-          - 여러 서비스에 걸쳐져있던 광고 소진제어 도메인 하나의 서비스로 통합
-          - 서비스간 Contract test (Pact) 도입 및 구축
-          - Kafka를 활용한 광고 서버와 할당 서버의 의존성 제거
+          - [[Buzzvil](#buzzvil)] Python 모노리스 광고 서버로부터 광고 할당 도메인 전체를 Golang 마이크로 서비스로 분리
+          - [[Buzzvil](#buzzvil)] 모노리스 광고 서버에 모듈러 모노리스를 기반으로한 도메인 분리 제안 후 리팩토링
+          - [[Buzzvil](#buzzvil)] 여러 서비스에 걸쳐져있던 광고 소진제어 도메인 하나의 서비스로 통합
+          - [[Buzzvil](#buzzvil)] 서비스간 Contract test (Pact) 도입 및 구축
+          - [[Buzzvil](#buzzvil)] Kafka를 활용한 광고 서버와 할당 서버의 의존성 제거
 
       - layout: left
         title: 기술 부채 해결 / 레거시 개편
         description: |
-          - 모노리스 광고 서버 Python2 → Python3 포팅
-          - 광고 할당에 사용되는 레거시 Elasticsearch 광고 캐시 이주
-          - Anti-corruption Layer를 활용한 단계적 마이크로 서비스 분리
+          - [[Buzzvil](#buzzvil)] 모노리스 광고 서버 Python2 → Python3 포팅
+          - [[Buzzvil](#buzzvil)] 광고 할당에 사용되는 레거시 Elasticsearch 광고 캐시 이주
+          - [[Buzzvil](#buzzvil)] Anti-corruption Layer를 활용한 단계적 마이크로 서비스 분리
 
       - layout: left
         title: 인프라
         description: |
-          - Istio 트래픽 미러링으로 마이그레이션 검증
+          - [[Buzzvil](#buzzvil)] Istio 트래픽 미러링으로 마이그레이션 검증
             - 7k+ RPS 광고 서버 포팅
-            - 2k+ RPS 광고 할당 서버 분리
-          - Istio 트래픽 쉬프팅과 Kubernetes Deployment로 점진적인 광고 서버 포팅
-          - DevOps Edge program 멤버로 지속적인 인프라 역량 학습
+            - 3k+ RPS 광고 할당 서버 분리
+          - [[Buzzvil](#buzzvil)] DevOps Edge program 멤버로 지속적인 인프라 역량 학습
+          - [[Buzzvil](#buzzvil)] 모노리스 프로젝트의 CI 소요시간 4배 단축
           - 개인 프로젝트로 HA로 구성된 Kubernetes 클러스터 2개를 바닥부터 구축 및 운영 중
             - 아래 [Projects의 homelab](#homelab) 참조
-          - 모노리스 프로젝트의 CI 소요시간 4배 단축
 
       - layout: left
         title: 팀을 넘어선 기술 공유 및 도입
         description: |
-          - [테크 블로그](https://tech.buzzvil.com/author/isac-yoo/)를 활용한 사내외 지식 공유
-          - 유관 프로덕트팀과의 도메인 분리를 선제적으로 제안 및 DDD 이주 가이드 & 리뷰
-          - Python expert group 리딩하며 Python 프로젝트 코드 퀄리티 개선
-          - Python type checker (mypy) 전사 도입
+          - [[Buzzvil](#buzzvil)] [테크 블로그](https://tech.buzzvil.com/author/isac-yoo/)를 활용한 사내외 지식 공유
+          - [[Buzzvil](#buzzvil)] 유관 프로덕트팀과의 도메인 분리를 선제적으로 제안 및 DDD 이주 가이드 & 리뷰
+          - [[Buzzvil](#buzzvil)] Python expert group 리딩하며 Python 프로젝트 코드 퀄리티 개선
+          - [[Buzzvil](#buzzvil)] Python type checker (mypy) & code formatter (black) 전사 도입
             - 제안서를 통한 전사 합의
             - 지속적인 typing 가이드 & 리뷰
             - Python 버전 업그레이드마다 신규 typing 기술 공유
-          - Python code formatter (black) 전사 도입
-          - 프로젝트간 lint 설정을 버전으로 관리하며 동일하게 유지하는 툴 도입
-          - Python package manager로 pip-tools 대신 poetry 도입
+          - [[Buzzvil](#buzzvil)] 프로젝트간 lint 설정을 버전으로 관리하며 동일하게 유지하는 툴 도입
+          - [[Buzzvil](#buzzvil)] Python package manager로 pip-tools 대신 poetry 도입
 
       - layout: left
         title: 대용량 데이터 처리 및 성능 개선
         description: |
-          - 2k+ RPS 광고 할당에 사용되는 Elasticsearch의 Lucene 레벨 최적화로 latency 30% 감소
-          - 통계 서버와 소진제어 서비스에 asyncio 도입으로 throughput & latency 최적화
+          - [[Buzzvil](#buzzvil)] 3k+ RPS 광고 할당에 사용되는 Elasticsearch의 Lucene 레벨 최적화로 latency 30% 감소
+          - [[Buzzvil](#buzzvil)] 통계 서버와 소진제어 서비스에 asyncio 도입으로 throughput & latency 최적화
+          - [[AB180](#ab180)] 트래킹 서버의 throughput 2배 향상
 
   - title: 학력
     layout: list # Type of content section (list/text)
@@ -173,11 +183,9 @@ content:
         description: |
           - 프로덕션급의 스택을 가진 Kubernetes cluster를 바닥부터 구축 & 운영하는 경험을 위해 작업
             - 인프라를 구성하고 자동 운영 상태를 만드는 것이 주목적
-            - [github.com/khuedoan/homelab](https://github.com/khuedoan/homelab)과 같은 homelab 프로젝트들 참고
           - 현재도 해당 repository 기반 GitOps로 클러스터 운영중
           - 아래의 서버가 실제로 동작 중 (FYI. 웹 UI가 있는 서버들은 아닙니다)
-            - [blocky](https://github.com/0xERR0R/blocky)라는 DNS proxy ⇨ dnsp.bhyoo.com (DNS, DNS over TLS, DNS over HTTPS)
-            - [Docker Image Registry](https://hub.docker.com/_/registry/) ⇨ [registry.bhyoo.com](https://registry.bhyoo.com/)
+            - [blocky](https://github.com/0xERR0R/blocky)라는 DNS proxy ⇨ dnsb.bhyoo.com (DNS, DNS over TLS, DNS over HTTPS)
             - [Python Formatter black의 서버](https://black.readthedocs.io/en/stable/usage_and_configuration/black_as_a_server.html) ⇨ [black.bhyoo.com](https://black.bhyoo.com)
           - 관련 기술: Kubernetes, Terraform, Helm, GitOps, ArgoCD, Traefik, Rook, Prometheus, Grafana, Docker, Cloudflare, Github Actions
 
@@ -209,55 +217,6 @@ content:
           - [기존 플러그인](https://github.com/vchaptsev/flake8-keyword-arguments)이 false alarm 문제가 있어서 개발
           - 정적 분석으로 파라미터가 여러개일 때 가독성을 위해 positional argument 대신 keyword argument를 사용하도록 가이드
 
-      - layout: top-middle
-        title: loopmon
-        additional_links:
-          - title: repository
-            icon: fab fa-github
-            url: github.com/isac322/loopmon
-        quote: >
-          Python asyncio의 Eventloop 쓰로틀링 모니터링 라이브러리 개발
-        description: |
-          - 회사에서 Eventloop 쓰로틀링 문제 경험 후 문제 예방을 위해 개발하게 됨
-          - asyncio 기반 프로그램을 실행할 때 아래 상황을 모니터링할 수 있음
-            - blocking 함수가 async 함수 내부에서 실행되는 상황
-            - 너무 많은 async 함수가 호출되는 상항
-
-      - layout: top-middle
-        title: Linux 자동 환경 구축 스크립트
-        additional_links:
-          - title: repository
-            icon: fab fa-github
-            url: github.com/isac322/init-manjaro
-        quote: >
-          데스크탑 & 서버에서 Manjaro Linux를 자동으로 설치할 수 있는 스크립트
-        description: |
-          - Manjaro Linux OS 설치 이후 환경 구축을 자동화하기 위해서 개발
-          - 메인으로 사용하는 데스크탑 & 랩탑과 SBC서버에서 사용 중
-
-      - layout: top-middle
-        title: 자동 과제 채점 웹 서비스
-        additional_links:
-          - title: repository
-            icon: fab fa-github
-            url: github.com/isac322/cp2017s
-        quote: >
-          실급 과제를 보여주고, 코드를 자동 채점하는 웹 서비스
-        description: |
-          - [M1522.000600](https://cse.snu.ac.kr/course/%EC%BB%B4%ED%93%A8%ED%84%B0%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D) 실습 조교 중 시간 단축을 위해 개발하고 한학기 동안 직접 운영
-          - Typescript & NodeJS로 개발하고 Docker로 채점 샌드박싱
-
-      - layout: top-middle
-        title: BOJ-auto_code_downloader
-        additional_links:
-          - title: repository
-            icon: fab fa-github
-            url: github.com/isac322/BOJ-auto_code_downloader
-        quote: >
-          Baekjoon Online Judge에 제출한 코드 다운로드 툴
-        description: |
-          - 맞은 코드를 모아서 기록하는 것을 자동화 하고자 만든 툴
-
   - title: Skills
     layout: list # Type of content section (list/text)
     content:
@@ -270,7 +229,7 @@ content:
         title: 백엔드
         description: |
           - Python, asyncio, Django, FastAPI, gunicorn, sqlalchemy
-          - Golang
+          - Golang, fiber
           - gRPC, Protobuf
           - Elasticsearch, Kafka, MemoryDB, Athena, DynamoDB
           - Pact, pytest
