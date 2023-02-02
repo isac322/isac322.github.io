@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  app:
+    image: cv-local
+    build:
+      context: .
+    volumes:
+      - "./images:/app/images:ro"
+      - "./assets:/app/assets:ro"
+      - "./_config.yml:/app/_config.yml:ro"
+    ports:
+      - "4000:4000"
