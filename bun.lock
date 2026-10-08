@@ -5,14 +5,14 @@
     "": {
       "name": "cv",
       "dependencies": {
-        "astro": "^7.3.7",
-        "marked": "^18.1.0",
-        "pretendard": "^1.3.9",
-        "yaml": "^2.9.1",
+        "astro": "7.3.7",
+        "marked": "18.1.0",
+        "pretendard": "1.3.9",
+        "yaml": "2.9.1",
       },
       "devDependencies": {
-        "@types/bun": "^1.4.2",
-        "typescript": "^7.0.2",
+        "@types/bun": "1.4.2",
+        "typescript": "7.0.2",
       },
     },
   },

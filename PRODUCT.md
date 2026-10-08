@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Bun 1.4 + Astro 7 + TypeScript 7, plain CSS (no utility framework), self-hosted Pretendard and MaruBuri web fonts. There is no separately generated PDF: the PDF is the browser's print of the page (Ctrl/Cmd+P → Save as PDF). Static output deployed to GitHub Pages at `cv.bhyoo.com`. Dependencies are the latest releases at the time they were added, recorded in `bun.lock`; CI installs with `--frozen-lockfile`.
+Bun 1.4 + Astro 7 + TypeScript 7, plain CSS (no utility framework), self-hosted Pretendard and MaruBuri web fonts. There is no separately generated PDF: the PDF is the browser's print of the page (Ctrl/Cmd+P → Save as PDF). Static output deployed to GitHub Pages at `cv.bhyoo.com`. Builds are reproducible: exact dependency versions in `package.json` and `bun.lock` (CI installs with `--frozen-lockfile`), Bun 1.4.2 runs everything including astro and tsc (`bun --bun`, no Node), and CI pins the runner image major and every action by commit SHA.
 
 ## Users
 
@@ -27,10 +27,9 @@ A single-page curriculum vitae that reads well on screen and prints from the bro
 ## Capabilities and Constraints
 
 - Language: Korean only (company names, technologies, and paper titles stay in their original language).
-- Content is migrated verbatim from the previous Jekyll `_config.yml`; the owner updates it later. Some entries are known to be stale (e.g. AB180 listed as current) and must not be "corrected" by guesswork.
+- Content in `src/data/cv.yaml` was migrated verbatim from the retired site; the owner updates it later. Some entries are known to be stale (e.g. AB180 listed as current) and must not be "corrected" by guesswork.
 - No photo, no icons, no skill bars, no decorative fills: ornament stays typographic (rules, quote mark, drop cap, timeline dots).
 - Web and PDF are the same design; print rules only handle pagination and page margins, never a separate layout.
-- Deployment changes (GitHub Pages source switch, commits, PRs) are out of scope until the owner asks.
 
 ## Brand Commitments
 
@@ -47,8 +46,8 @@ On 2026-10-08 the owner chose design variant E "에디토리얼 매거진" over 
 
 ## Evidence on Hand
 
-- All CV content: `_config.yml` (about text, 경력, 역량, 학력, Projects, 외부 활동, Skills), name 유병훈, email bhyoo@bhyoo.com, GitHub isac322, LinkedIn bh-yoo, blog velog.io/@isac322.
-- Domain: `CNAME` → cv.bhyoo.com.
+- All CV content: `src/data/cv.yaml` (about text, 경력, 역량, 학력, Projects, 외부 활동, Skills), name 유병훈, email bhyoo@bhyoo.com, GitHub isac322, LinkedIn bh-yoo, blog velog.io/@isac322.
+- Domain: cv.bhyoo.com, set as the custom domain in the repository's GitHub Pages settings (Actions deployments ignore a `CNAME` file).
 - No updated career data, testimonials, or English translation exist; do not fabricate them.
 
 ## Product Principles

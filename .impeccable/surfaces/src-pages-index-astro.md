@@ -7,7 +7,7 @@ related_targets: []
 
 # CV page (`/`, also printed from the browser to PDF)
 
-Mode: Read. Audience: recruiters, hiring managers, engineers judging a Korean backend engineer on screen or on A4 paper. Job: find companies, roles, periods in seconds, then read matching achievements. Content: verbatim migration of the old `_config.yml`, owned by `src/data/cv.yaml`. Constraints: Korean only, the browser's print of the page identical to the web page (no separately generated PDF), no photo/icons/decorative fills.
+Mode: Read. Audience: recruiters, hiring managers, engineers judging a Korean backend engineer on screen or on A4 paper. Job: find companies, roles, periods in seconds, then read matching achievements. Content: owned by `src/data/cv.yaml` (migrated verbatim from the retired site). Constraints: Korean only, the browser's print of the page identical to the web page (no separately generated PDF), no photo/icons/decorative fills.
 
 ## Direction contract
 
