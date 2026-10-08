@@ -1,0 +1,350 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-08T00:00:00Z",
+  "title": "Design System: 유병훈 — 이력서",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(23.5% 0.0121 67.2)",
+        "tonalRamp": [
+          "#080503",
+          "#231e19",
+          "#423c36",
+          "#625c56",
+          "#857f79",
+          "#aaa39d",
+          "#d0c9c2",
+          "#f4ede6"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "oklch(38.7% 0.0163 71.0)",
+        "tonalRamp": [
+          "#090502",
+          "#241e17",
+          "#433c34",
+          "#645c54",
+          "#877f76",
+          "#aba39a",
+          "#d1c9bf",
+          "#f6ede3"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "oklch(49.9% 0.0201 67.3)",
+        "tonalRamp": [
+          "#0a0501",
+          "#261e15",
+          "#443b32",
+          "#665c52",
+          "#897e74",
+          "#ada298",
+          "#d4c8bd",
+          "#f8ece1"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "oklch(85.3% 0.0250 77.4)",
+        "tonalRamp": [
+          "#0a0500",
+          "#261e12",
+          "#453c2e",
+          "#665c4e",
+          "#897f70",
+          "#aea394",
+          "#d4c9b9",
+          "#f8eddc"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Rule Strong",
+        "canonical": "oklch(74.5% 0.0340 76.4)",
+        "tonalRamp": [
+          "#0a0500",
+          "#281d0c",
+          "#473b29",
+          "#695b48",
+          "#8c7e6a",
+          "#b1a28d",
+          "#d8c8b2",
+          "#fcecd6"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "oklch(97.4% 0.0114 84.6)",
+        "tonalRamp": [
+          "#070503",
+          "#221f19",
+          "#403d36",
+          "#615d56",
+          "#838079",
+          "#a8a49d",
+          "#cecac2",
+          "#f2eee6"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Desk Ground",
+        "canonical": "oklch(90.6% 0.0219 83.3)",
+        "tonalRamp": [
+          "#090500",
+          "#241e13",
+          "#433c30",
+          "#645d50",
+          "#877f72",
+          "#aba495",
+          "#d1cabb",
+          "#f6eede"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Brick",
+        "canonical": "oklch(48.4% 0.1345 34.2)",
+        "tonalRamp": [
+          "#120100",
+          "#3e0900",
+          "#711600",
+          "#9b3a24",
+          "#c35e47",
+          "#ec836a",
+          "#ffb6a4",
+          "#fee9e4"
+        ]
+      },
+      "accent-line": {
+        "role": "primary",
+        "displayName": "Accent Line",
+        "canonical": "oklch(76.6% 0.0670 39.9)",
+        "tonalRamp": [
+          "#110200",
+          "#381104",
+          "#5a3021",
+          "#7e5040",
+          "#a37362",
+          "#ca9785",
+          "#f2bdaa",
+          "#fee9e2"
+        ]
+      },
+      "accent-tint": {
+        "role": "primary",
+        "displayName": "Accent Tint",
+        "canonical": "oklch(92.1% 0.0256 56.1)",
+        "tonalRamp": [
+          "#0d0401",
+          "#291c13",
+          "#483a30",
+          "#695a50",
+          "#8d7d72",
+          "#b2a196",
+          "#d8c7bb",
+          "#fdebde"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "name": {
+        "displayName": "Name",
+        "purpose": "Masthead name, 58pt MaruBuri 700, +0.04em; 40pt ≤40rem."
+      },
+      "quote": {
+        "displayName": "Pull-quote",
+        "purpose": "Headline as a pull-quote between rules, 24pt MaruBuri 400, balanced; 15pt ≤40rem."
+      },
+      "section": {
+        "displayName": "Section Title",
+        "purpose": "21pt MaruBuri 700 under the double rule; 18pt ≤40rem."
+      },
+      "entry": {
+        "displayName": "Entry Name",
+        "purpose": "Company / school / project, 16pt MaruBuri 700."
+      },
+      "aside": {
+        "displayName": "Margin Heading",
+        "purpose": "Titled-entry heading in the margin column, 11.5pt MaruBuri 600."
+      },
+      "deck": {
+        "displayName": "Deck",
+        "purpose": "Entry summary set as a serif deck, 11pt MaruBuri 400, secondary ink."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Bullets and paragraphs, 10pt Pretendard, line-height 1.65; about lead at 1.75."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Role line, periods, margin links, section intro: 9.5pt Pretendard."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Folio contacts, 9pt Pretendard, +0.02em."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sheet",
+        "value": "0 1px 2px rgb(60 45 25 / 0.08), 0 12px 40px -12px rgb(60 45 25 / 0.25)",
+        "purpose": "Screen-only lift of the paper sheet off the desk; removed ≤40rem and in print."
+      }
+    ],
+    "motion": [],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "40rem",
+        "purpose": "Desk disappears, sheet pads 1.5rem × 1.125rem, name/quote/section step down, entry grid stacks, periods inline, timeline spine moves to the left edge."
+      }
+    ],
+    "page": [
+      {
+        "name": "a4-sheet",
+        "value": "size A4; margin 15mm 16mm 16mm; background #faf6ee",
+        "purpose": "@page geometry; .sheet mirrors it as width 210mm + matching padding, so the 178mm content box is shared by screen and print."
+      },
+      {
+        "name": "editorial-grid",
+        "value": "31mm aside + 10mm gutter + 1fr",
+        "purpose": "Every entry: margin column (period / margin-note links / heading) beside the text column."
+      },
+      {
+        "name": "measure",
+        "value": "128mm",
+        "purpose": "Maximum width of the single-column about lead."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Sheet",
+      "kind": "custom",
+      "refersTo": "sheet",
+      "description": "The A4 page: warm paper, 210mm wide, screen padding equal to the @page margins, lifted off a warm desk on screen.",
+      "html": "<div class=\"ds-sheet\"><p class=\"ds-note\">178mm measure — ink on warm paper</p></div>",
+      "css": ".ds-sheet { width: 210mm; max-width: 100%; padding: 15mm 16mm 16mm; background: var(--paper, #faf6ee); box-shadow: 0 1px 2px rgb(60 45 25 / 0.08), 0 12px 40px -12px rgb(60 45 25 / 0.25); font-family: var(--font-sans, 'Pretendard Variable', Pretendard, system-ui, sans-serif); font-size: 10pt; line-height: 1.65; color: var(--ink, #221d18); } .ds-note { margin: 0; color: var(--ink-muted, #6b6157); }"
+    },
+    {
+      "name": "Masthead",
+      "kind": "custom",
+      "description": "Folio rule with contacts, giant serif name, pull-quote headline on a brick quote mark, and a single-column lead with a brick drop cap.",
+      "html": "<header class=\"ds-masthead\"><ul class=\"ds-folio\"><li><a href=\"#\">bhyoo@bhyoo.com</a></li><li><a href=\"#\">GitHub</a></li></ul><h1 class=\"ds-name\">유병훈</h1><p class=\"ds-quote\">코딩으로 스트레스 해소하는 서버 개발자</p><p class=\"ds-about\">DDD를 통한 도메인 정의와 빠른 문제 해결에 관심이 있는 서버 개발자입니다.</p></header>",
+      "css": ".ds-folio { display: flex; justify-content: flex-end; gap: 1.125rem; margin: 0; padding: 0 0 0.5rem; list-style: none; border-bottom: 0.75pt solid var(--ink, #221d18); font-family: var(--font-sans, 'Pretendard Variable', Pretendard, system-ui, sans-serif); font-size: 9pt; letter-spacing: 0.02em; } .ds-folio li:first-child { margin-right: auto; } .ds-folio a { color: var(--ink-secondary, #4a433b); text-decoration: none; } .ds-name { margin: 7mm 0 0; font-family: var(--font-serif, MaruBuri, serif); font-size: 58pt; font-weight: 700; line-height: 1; letter-spacing: 0.04em; color: var(--ink, #221d18); } .ds-quote { position: relative; margin: 6mm 0 0; padding: 5mm 0 5mm 17mm; border-top: 2.25pt solid var(--ink, #221d18); border-bottom: 0.75pt solid var(--ink, #221d18); font-family: var(--font-serif, MaruBuri, serif); font-size: 24pt; line-height: 1.35; letter-spacing: -0.01em; text-wrap: balance; } .ds-quote::before { content: \"\\201C\"; position: absolute; left: -1mm; top: 2.6mm; font-family: var(--font-serif, MaruBuri, serif); font-size: 72pt; font-weight: 700; line-height: 1; color: var(--accent, #9c3b25); } .ds-about { max-width: 128mm; margin: 6mm 0 0; font-family: var(--font-sans, 'Pretendard Variable', Pretendard, system-ui, sans-serif); font-size: 10pt; line-height: 1.75; color: var(--ink-secondary, #4a433b); } .ds-about::first-letter { float: left; margin: 0.06em 0.12em 0 0; font-family: var(--font-serif, MaruBuri, serif); font-size: 3.4em; font-weight: 700; line-height: 0.9; color: var(--accent, #9c3b25); }"
+    },
+    {
+      "name": "Section Head",
+      "kind": "custom",
+      "description": "Newspaper double rule (2.25pt + 0.5pt hairline) over a 21pt serif title with an optional muted intro on the same baseline.",
+      "html": "<div class=\"ds-section-head\"><h2 class=\"ds-section-title\">Skills</h2><p class=\"ds-section-intro\">업무에서 경험한 기술들입니다.</p></div>",
+      "css": ".ds-section-head { position: relative; display: flex; align-items: baseline; flex-wrap: wrap; column-gap: 1.125rem; padding-top: 3.5mm; border-top: 2.25pt solid var(--ink, #221d18); } .ds-section-head::before { content: \"\"; position: absolute; left: 0; right: 0; top: 1.2mm; border-top: 0.5pt solid var(--ink, #221d18); } .ds-section-title { margin: 0; font-family: var(--font-serif, MaruBuri, serif); font-size: 21pt; font-weight: 700; line-height: 1.2; letter-spacing: 0.01em; color: var(--ink, #221d18); } .ds-section-intro { margin: 0; font-family: var(--font-sans, 'Pretendard Variable', Pretendard, system-ui, sans-serif); font-size: 9.5pt; color: var(--ink-muted, #6b6157); }"
+    },
+    {
+      "name": "Timeline Entry",
+      "kind": "custom",
+      "description": "Dated entry on the editorial grid: right-aligned period in the margin, brick dot on a rule-strong spine in the gutter, serif name, role line, serif deck, brick-dash bullets.",
+      "html": "<article class=\"ds-entry\"><p class=\"ds-period\"><span>2022.10</span><span>~ 현재</span></p><div><h3 class=\"ds-entry-title\">AB180</h3><p class=\"ds-role\"><b>Backend Engineer</b> · <span>ab180.co</span></p><p class=\"ds-deck\">초당 트래킹 22,800+의 광고 성과 분석 솔루션</p><ul class=\"ds-body\"><li>트래킹 서버 운영 &amp; 유지보수</li></ul></div></article>",
+      "css": ".ds-entry { position: relative; display: grid; grid-template-columns: 31mm minmax(0, 1fr); column-gap: 10mm; font-family: var(--font-sans, 'Pretendard Variable', Pretendard, system-ui, sans-serif); font-size: 10pt; line-height: 1.65; color: var(--ink, #221d18); } .ds-entry::before { content: \"\"; position: absolute; left: calc(31mm + 5mm); top: 0.55em; bottom: 0; border-left: 0.75pt solid var(--rule-strong, #b9aa95); } .ds-entry::after { content: \"\"; position: absolute; left: calc(31mm + 5mm); top: calc(16pt * 1.3 / 2); width: 9pt; height: 9pt; border: 2pt solid var(--paper, #faf6ee); border-radius: 50%; background: var(--accent, #9c3b25); transform: translate(-50%, -50%); } .ds-period { margin: 0; padding-top: 0.45em; text-align: right; font-size: 9.5pt; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; line-height: 1.45; color: var(--ink-muted, #6b6157); } .ds-period span { display: block; } .ds-period span:first-child { font-weight: 600; color: var(--ink, #221d18); } .ds-entry-title { margin: 0; font-family: var(--font-serif, MaruBuri, serif); font-size: 16pt; font-weight: 700; line-height: 1.3; } .ds-role { margin: 0.25rem 0 0; font-size: 9.5pt; line-height: 1.3; color: var(--ink-muted, #6b6157); } .ds-role b { font-weight: 600; color: var(--ink, #221d18); } .ds-deck { margin: 0.5rem 0 0; font-family: var(--font-serif, MaruBuri, serif); font-size: 11pt; line-height: 1.5; color: var(--ink-secondary, #4a433b); } .ds-body { margin: 0.75rem 0 0; padding: 0; list-style: none; } .ds-body li { position: relative; padding-left: 1.05em; } .ds-body li::before { content: \"\"; position: absolute; left: 0; top: 0.8em; width: 0.55em; border-top: 1.25pt solid var(--accent, #9c3b25); }"
+    },
+    {
+      "name": "Compact List (Skills)",
+      "kind": "custom",
+      "description": "Bullets become a wrapping row; each item but the last trails a brick slash so a separator never leads a line.",
+      "html": "<ul class=\"ds-compact\"><li>Python, asyncio</li><li>Golang, fiber</li><li>gRPC, Protobuf</li></ul>",
+      "css": ".ds-compact { display: flex; flex-wrap: wrap; row-gap: 0.25rem; margin: 0; padding: 0; list-style: none; font-family: var(--font-sans, 'Pretendard Variable', Pretendard, system-ui, sans-serif); font-size: 10pt; line-height: 1.65; color: var(--ink, #221d18); } .ds-compact li:not(:last-child)::after { content: \"/\"; margin: 0 0.6em; color: var(--accent, #9c3b25); }"
+    },
+    {
+      "name": "Link",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "Content links inherit text colour with an accent-line underline; margin-note links are brick; in-page cross-references are muted ink with a faint rule underline. All turn brick on hover; 2px brick focus ring.",
+      "html": "<p class=\"ds-links\"><a class=\"ds-link\" href=\"#\">EdgeIso (IPDPS 2020)</a> <a class=\"ds-link-note\" href=\"#\">repository</a> [<a class=\"ds-link-xref\" href=\"#\">Buzzvil</a>]</p>",
+      "css": ".ds-links { font-family: var(--font-sans, 'Pretendard Variable', Pretendard, system-ui, sans-serif); font-size: 10pt; color: var(--ink, #221d18); } .ds-link { color: inherit; text-decoration-line: underline; text-decoration-color: var(--accent-line, #d9a593); text-decoration-thickness: 0.08em; text-underline-offset: 0.2em; } .ds-link-note { color: var(--accent, #9c3b25); text-decoration-color: var(--accent-line, #d9a593); text-underline-offset: 0.2em; } .ds-link-xref { color: var(--ink-muted, #6b6157); text-decoration-color: var(--rule, #d8cdbd); text-underline-offset: 0.2em; } .ds-link:hover, .ds-link-note:hover, .ds-link-xref:hover { color: var(--accent, #9c3b25); } .ds-link:focus-visible, .ds-link-note:focus-visible, .ds-link-xref:focus-visible { outline: 2px solid var(--accent, #9c3b25); outline-offset: 2px; border-radius: 2px; }"
+    },
+    {
+      "name": "Highlight (mark)",
+      "kind": "custom",
+      "refersTo": "mark",
+      "description": "Accent-tint patch behind a short phrase; never wraps.",
+      "html": "<p class=\"ds-mark-line\"><mark class=\"ds-mark\">팀의 목표</mark>에 따라서 기술 부채를 의도하기도</p>",
+      "css": ".ds-mark-line { font-family: var(--font-sans, 'Pretendard Variable', Pretendard, system-ui, sans-serif); font-size: 10pt; line-height: 1.75; color: var(--ink-secondary, #4a433b); } .ds-mark { background: var(--accent-tint, #f3e1d5); color: var(--ink, #221d18); padding: 0 0.2em; border-radius: 2px; white-space: nowrap; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Editorial Spread",
+    "overview": "A single-page Korean CV laid out like a magazine feature on warm A4 paper. The masthead carries the identity — a folio rule with contacts, the name set huge in MaruBuri, and the headline as a pull-quote hung on a brick quotation mark — followed by a one-column lead opened with a brick drop cap. Sections open under newspaper double rules; every entry sits on an editorial grid with a 31mm margin column for periods, margin-note links, or a short heading.\n\nOrnament stays typographic: quote mark, drop cap, double rules, timeline dots, brick list dashes. No photos, icons, cards, skill bars, or fills. The owner chose this direction (variant E) on 2026-10-08 over the earlier plain version, which felt too simple. The same warm sheet is the screen page and the printed page.",
+    "keyCharacteristics": [
+      "One A4 sheet in warm paper (#faf6ee); screen padding equals the @page margins, so web and PDF share a 178mm content box.",
+      "MaruBuri for name, pull-quote, section titles, entry names, margin headings, and decks; Pretendard for everything else.",
+      "All type in pt: 58 / 24 / 21 / 16 / 11.5 / 11 / 10 / 9.5 / 9.",
+      "Warm ink ladder plus a single brick accent (#9c3b25) for editorial ornaments and margin-note links.",
+      "Editorial grid: 31mm margin column + 10mm gutter + text column; dated sections become a timeline."
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "Brick #9c3b25 is the only chromatic colour: quote mark, drop cap, timeline dots, list dashes, Skills separators, margin-note links, hover and focus. Hierarchy otherwise steps down the ink ladder.",
+        "section": "colors"
+      },
+      {
+        "name": "The Contrast Floor Rule",
+        "body": "Every text colour is ≥ 4.5:1 on paper (ink 15.5, secondary 9.0, muted 5.6, brick 6.4). Rule, rule-strong, and accent-line draw lines only.",
+        "section": "colors"
+      },
+      {
+        "name": "The Quiet Cross-Reference Rule",
+        "body": "In-page links (href^=\"#\") such as [Buzzvil] are muted ink with a faint rule underline; content links keep the accent-line underline. Repeated wayfinding must not out-shout citations.",
+        "section": "colors"
+      },
+      {
+        "name": "The pt-Only Rule",
+        "body": "Every font size is pt, never px or rem, so screen and PDF share physical sizes.",
+        "section": "typography"
+      },
+      {
+        "name": "The Keep-All Rule",
+        "body": "word-break: keep-all and hanging-punctuation govern Korean breaking; text-wrap: pretty on prose, balance on the pull-quote; <mark> phrases never wrap.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Source, Two Outputs Rule",
+        "body": "Screen sheet and printed page share every token; the PDF is the browser's print of the page, never a generated file. Print CSS only sets @page and paginates. html uses print-color-adjust: exact so paper tone, marks, and dots print with Background graphics off, and @page declares empty @top-left/@bottom-left margin boxes to suppress the browser's print header and footer.",
+        "section": "layout"
+      },
+      {
+        "name": "The Two-Item Break Rule",
+        "body": "Headings stay with their first body block; list items never split; a list breaks only with at least two items on each side. Entries themselves stay breakable so a long section can start at a page foot.",
+        "section": "layout"
+      },
+      {
+        "name": "The Single Shadow Rule",
+        "body": "The sheet's screen-only lift is the only shadow; inside the sheet, separation is rules and whitespace.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep every size in pt and the A4 geometry in mm tokens shared by .sheet and @page.",
+      "Do reserve brick for the editorial ornaments and margin-note links.",
+      "Do keep repeated in-page references quiet (muted ink, faint underline).",
+      "Do keep the pagination rules — heading with first block, no lone first or last bullet — when changing layout.",
+      "Do print the page from the browser (Save as PDF) and look at every page after a spacing change."
+    ],
+    "donts": [
+      "Don't add photos, icons, skill bars, badges, cards, or decorative backgrounds.",
+      "Don't add a second accent colour or tint section bands.",
+      "Don't make whole entries or sections break-inside: avoid; it pushes long sections to the next page and leaves empty bands.",
+      "Don't set the about lead in narrow multi-columns; Korean phrases split badly.",
+      "Don't build a print-only layout."
+    ]
+  }
+}

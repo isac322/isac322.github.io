@@ -1,0 +1,32 @@
+---
+import type { CV } from "../lib/cv";
+import { renderBlock } from "../lib/markdown";
+
+interface Props {
+  profile: CV["profile"];
+}
+
+const { profile } = Astro.props;
+---
+
+<header class="masthead">
+  <nav class="folio" aria-label="연락처">
+    <ul class="contacts">
+      <li>
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      </li>
+      {
+        profile.links.map((link) => (
+          <li>
+            <a href={link.url} target="_blank" rel="noopener">
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <h1 class="name">{profile.name}</h1>
+  <p class="headline">{profile.headline}</p>
+  <div class="about" set:html={renderBlock(profile.about)} />
+</header>

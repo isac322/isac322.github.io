@@ -1,0 +1,106 @@
+---
+import type { Entry } from "../lib/cv";
+import { renderBlock, renderInline } from "../lib/markdown";
+
+interface Props {
+  entry: Entry;
+}
+
+const { entry } = Astro.props;
+const hasLinks = Boolean(entry.links && entry.links.length > 0);
+
+// Three editorial layouts, chosen from the data itself:
+//  - dated:  the margin column carries the period (timeline sections)
+//  - linked: the margin column carries the links as margin notes
+//  - titled: a bare heading + body; the heading itself sits in the margin
+const mode = entry.period
+  ? "dated"
+  : entry.role || entry.summary || entry.urlLabel || hasLinks
+    ? "linked"
+    : "titled";
+
+// "2022.10 ~ 현재" → start on one line, "~ 현재" on the next, stacked in the
+// margin beside the timeline; the text itself is unchanged.
+const periodParts = entry.period ? entry.period.split(/\s*~\s*/) : [];
+---
+
+<article
+  class:list={["entry", `entry--${mode}`]}
+  id={entry.id}
+>
+  <div class="entry-aside">
+    {
+      mode === "dated" && (
+        <p class="entry-period">
+          {periodParts.map((part, i) => (
+            <span class="entry-period-part">{i > 0 ? `~ ${part}` : part}</span>
+          ))}
+        </p>
+      )
+    }
+    {
+      mode === "titled" && <h3 class="entry-title entry-title--aside">{entry.title}</h3>
+    }
+    {
+      mode === "linked" && hasLinks && (
+        <ul class="entry-links">
+          {entry.links!.map((link) => (
+            <li>
+              <a href={link.url} target="_blank" rel="noopener">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+  <div class="entry-main">
+    {
+      mode !== "titled" && (
+        <div class="entry-header">
+          <h3 class="entry-title">
+            {entry.url ? (
+              <a href={entry.url} target="_blank" rel="noopener">
+                {entry.title}
+              </a>
+            ) : (
+              entry.title
+            )}
+          </h3>
+          {(entry.role || entry.urlLabel) && (
+            <p class="entry-role-line">
+              {entry.role && <span class="entry-role">{entry.role}</span>}
+              {entry.urlLabel && (
+                <span class="entry-url-label">
+                  {entry.url ? (
+                    <a href={entry.url} target="_blank" rel="noopener">
+                      {entry.urlLabel}
+                    </a>
+                  ) : (
+                    entry.urlLabel
+                  )}
+                </span>
+              )}
+            </p>
+          )}
+          {mode === "dated" && hasLinks && (
+            <ul class="entry-links entry-links--inline">
+              {entry.links!.map((link) => (
+                <li>
+                  <a href={link.url} target="_blank" rel="noopener">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+          {entry.summary && (
+            <p class="entry-summary" set:html={renderInline(entry.summary)} />
+          )}
+        </div>
+      )
+    }
+    {entry.body && <div class="entry-body" set:html={renderBlock(entry.body)} />}
+  </div>
+</article>
