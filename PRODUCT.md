@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Bun 1.4 + Astro 7 + TypeScript 7, plain CSS (no utility framework), self-hosted Pretendard and MaruBuri web fonts. There is no separately generated PDF: the PDF is the browser's print of the page (Ctrl/Cmd+P → Save as PDF). Static output deployed to GitHub Pages at `cv.bhyoo.com`. Every dependency is pinned to its latest release at build time.
+Bun 1.4 + Astro 7 + TypeScript 7, plain CSS (no utility framework), self-hosted Pretendard and MaruBuri web fonts. There is no separately generated PDF: the PDF is the browser's print of the page (Ctrl/Cmd+P → Save as PDF). Static output deployed to GitHub Pages at `cv.bhyoo.com`. Dependencies are the latest releases at the time they were added, recorded in `bun.lock`; CI installs with `--frozen-lockfile`.
 
 ## Users
 
