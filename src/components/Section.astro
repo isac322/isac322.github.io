@@ -1,0 +1,37 @@
+---
+import type { Section } from "../lib/cv";
+import { renderInline } from "../lib/markdown";
+import Entry from "./Entry.astro";
+
+interface Props {
+  section: Section;
+}
+
+const { section } = Astro.props;
+// Skills groups read better as compact wrapping lists.
+const compact = section.id === "skills";
+// Every entry dated → the margin column becomes a vertical timeline.
+const timeline = section.entries.every((entry) => Boolean(entry.period));
+const headingId = `${section.id}-heading`;
+---
+
+<section
+  class:list={[
+    "section",
+    { "section--compact": compact, "section--timeline": timeline },
+  ]}
+  id={section.id}
+  aria-labelledby={headingId}
+>
+  <div class="section-head">
+    <h2 class="section-title" id={headingId}>{section.title}</h2>
+    {
+      section.intro && (
+        <p class="section-intro" set:html={renderInline(section.intro)} />
+      )
+    }
+  </div>
+  <div class="section-entries">
+    {section.entries.map((entry) => <Entry entry={entry} />)}
+  </div>
+</section>

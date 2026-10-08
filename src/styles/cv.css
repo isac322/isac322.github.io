@@ -1,0 +1,727 @@
+/* ==========================================================================
+   cv.css — Editorial: a magazine spread on warm off-white paper.
+   Ink-black MaruBuri for display type, Pretendard for detail, one brick
+   accent (pull-quote mark, drop cap, timeline dots, list markers).
+   ========================================================================== */
+
+:root {
+  /* Palette — warm paper, ink, one brick accent. Ratios are on --paper. */
+  --ink: #221d18;           /* body text, 15.5:1 */
+  --ink-secondary: #4a433b; /* about, decks, 9.0:1 */
+  --ink-muted: #6b6157;     /* periods, labels, contacts, 5.6:1 */
+  --rule: #d8cdbd;          /* hairlines (decorative) */
+  --rule-strong: #b9aa95;   /* timeline spine (decorative) */
+  --paper: #faf6ee;
+  --ground: #e7dfd0;        /* screen-only desk behind the sheet */
+  --accent: #9c3b25;        /* brick, 6.4:1 */
+  --accent-line: #d9a593;   /* link underline (decorative) */
+  --accent-tint: #f3e1d5;   /* <mark>, selection; ink 13.2:1 on it */
+
+  /* Type scale — pt is physical, so screen and print share sizes exactly. */
+  --text-xs: 9pt;
+  --text-sm: 9.5pt;
+  --text-body: 10pt;
+  --text-deck: 11pt;      /* entry summaries, set as serif decks */
+  --text-aside: 11.5pt;   /* margin headings (strengths, skills) */
+  --text-entry: 16pt;     /* company / school / project names */
+  --text-section: 21pt;   /* section titles */
+  --text-quote: 24pt;     /* the pull-quote headline */
+  --text-name: 58pt;      /* the masthead name */
+  --leading: 1.65;
+  --leading-tight: 1.3;
+
+  /* Spacing scale. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1.125rem;
+  --space-5: 1.5rem;
+  --space-6: 2.5rem;
+  --space-7: 3.25rem;
+
+  /* Editorial grid: a margin column + the text column. */
+  --aside: 31mm;
+  --measure: 128mm;         /* the about lead's reading measure */
+  --gutter: 10mm;
+
+  /* A4 page geometry — the screen sheet IS the printed page. */
+  --page-w: 210mm;
+  --page-margin-x: 16mm;
+  --page-margin-top: 15mm;
+  --page-margin-bottom: 16mm;
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--ground);
+  /* Print the paper tone, marks and dots even when the print dialog's
+     "Background graphics" option is off. */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading);
+  color: var(--ink);
+  background: var(--ground);
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all; /* CJK-aware line breaking: never split a word */
+  hanging-punctuation: first allow-end;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--accent-line);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--accent);
+  text-decoration-color: currentcolor;
+}
+
+/* In-page cross references ([Buzzvil], [AB180], #homelab): quiet — the
+   faint underline says "jump target", not "external resource". They repeat
+   dozens of times in 역량; loud underlines read as noise there. */
+a[href^="#"] {
+  color: var(--ink-muted);
+  text-decoration-color: var(--rule);
+}
+
+a[href^="#"]:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent-line);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--accent-tint);
+  color: var(--ink);
+}
+
+/* Highlights are short phrases; keep each on one line so a tinted word
+   never strands at a line start. */
+mark {
+  background: var(--accent-tint);
+  color: var(--ink);
+  padding: 0 0.2em;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+strong {
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Sheet — one paper page on a warm desk
+   -------------------------------------------------------------------------- */
+
+.sheet {
+  width: var(--page-w);
+  max-width: 100%;
+  margin: var(--space-6) auto var(--space-7);
+  /* Screen padding equals the @page margins, so the content box is the
+     same 178mm on screen and in print. */
+  padding: var(--page-margin-top) var(--page-margin-x) var(--page-margin-bottom);
+  background: var(--paper);
+  box-shadow:
+    0 1px 2px rgb(60 45 25 / 0.08),
+    0 12px 40px -12px rgb(60 45 25 / 0.25);
+  overflow-wrap: break-word;
+}
+
+/* --------------------------------------------------------------------------
+   Masthead — folio line, giant serif name, pull-quote, measured lead
+   -------------------------------------------------------------------------- */
+
+.folio {
+  padding-bottom: var(--space-2);
+  border-bottom: 0.75pt solid var(--ink);
+}
+
+.contacts {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  column-gap: var(--space-4);
+  row-gap: var(--space-1);
+  font-size: var(--text-xs);
+  letter-spacing: 0.02em;
+  line-height: var(--leading-tight);
+}
+
+.contacts li:first-child {
+  margin-right: auto; /* email on the left, profiles on the right */
+}
+
+.contacts a {
+  color: var(--ink-secondary);
+  text-decoration: none;
+}
+
+.contacts a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.name {
+  margin-top: 7mm;
+  font-family: var(--font-serif);
+  font-size: var(--text-name);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+/* The headline set as an oversized pull-quote, hung on a brick quote mark. */
+.headline {
+  position: relative;
+  margin-top: 6mm;
+  padding: 5mm 0 5mm 17mm;
+  border-top: 2.25pt solid var(--ink);
+  border-bottom: 0.75pt solid var(--ink);
+  font-family: var(--font-serif);
+  font-size: var(--text-quote);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.headline::before {
+  content: "\201C";
+  position: absolute;
+  left: -1mm;
+  top: 2.6mm;
+  font-family: var(--font-serif);
+  font-size: 72pt;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+}
+
+/* The about lead: one measured column opened by a drop cap. Two newspaper
+   columns at this width split Korean phrases ("Enabling / team") and break
+   sentences mid-thought, so the lead keeps a single readable measure. */
+.about {
+  max-width: var(--measure);
+  margin-top: 6mm;
+  font-size: var(--text-body);
+  line-height: 1.75;
+  color: var(--ink-secondary);
+}
+
+.about p {
+  text-wrap: pretty;
+}
+
+.about p + p {
+  margin-top: var(--space-3);
+}
+
+.about > p:first-child::first-letter {
+  float: left;
+  margin: 0.06em 0.12em 0 0;
+  font-family: var(--font-serif);
+  font-size: 3.4em;
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   Sections — large serif title under a newspaper double rule
+   -------------------------------------------------------------------------- */
+
+.section {
+  margin-top: var(--space-7);
+}
+
+.section-head {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: var(--space-4);
+  padding-top: 3.5mm;
+  border-top: 2.25pt solid var(--ink);
+}
+
+.section-head::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1.2mm;
+  border-top: 0.5pt solid var(--ink);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: var(--text-section);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+.section-intro {
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+.section-entries {
+  margin-top: 6mm;
+}
+
+/* --------------------------------------------------------------------------
+   Entry — margin column (period / links / heading) + text column
+   -------------------------------------------------------------------------- */
+
+.entry {
+  display: grid;
+  grid-template-columns: var(--aside) minmax(0, 1fr);
+  column-gap: var(--gutter);
+}
+
+/* Undated entries are divided by a hairline, like magazine departments. */
+.section:not(.section--timeline) .entry + .entry {
+  margin-top: 5mm;
+  padding-top: 5mm;
+  border-top: 0.5pt solid var(--rule);
+}
+
+.entry-aside {
+  min-width: 0;
+}
+
+.entry-main {
+  min-width: 0;
+}
+
+/* Entry name: company / school / project in large serif. */
+.entry-title {
+  font-family: var(--font-serif);
+  font-size: var(--text-entry);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.entry-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.entry-title a:hover {
+  color: var(--accent);
+}
+
+/* Margin heading (strengths, activities, skills). */
+.entry-title--aside {
+  font-size: var(--text-aside);
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: normal;
+  padding-top: 0.05em;
+}
+
+.entry-role-line {
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+  line-height: var(--leading-tight);
+}
+
+.entry-role {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.entry-url-label {
+  color: var(--ink-muted);
+}
+
+.entry-role + .entry-url-label::before {
+  content: "·";
+  margin: 0 0.5em;
+  color: var(--ink-muted);
+}
+
+.entry-url-label a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.entry-url-label a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Summary as a serif deck under the name. */
+.entry-summary {
+  margin-top: var(--space-2);
+  font-family: var(--font-serif);
+  font-size: var(--text-deck);
+  line-height: 1.5;
+  color: var(--ink-secondary);
+  text-wrap: pretty;
+}
+
+/* Period in the margin, right-aligned against the timeline spine. */
+.entry-period {
+  padding-top: 0.45em;
+  text-align: right;
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  color: var(--ink-muted);
+}
+
+.entry-period-part {
+  display: block;
+}
+
+.entry-period-part:first-child {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Links as margin notes. */
+.entry-links {
+  list-style: none;
+  padding-top: 0.45em;
+  text-align: right;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+.entry-links a {
+  color: var(--accent);
+  text-decoration-color: var(--accent-line);
+}
+
+.entry-links--inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+  padding-top: 0;
+  text-align: left;
+}
+
+/* Body: Pretendard bullets with short brick rules as markers. */
+.entry-body {
+  margin-top: var(--space-3);
+}
+
+.entry--titled .entry-body {
+  margin-top: 0;
+}
+
+.entry-body p {
+  text-wrap: pretty;
+}
+
+.entry-body p + p {
+  margin-top: var(--space-3);
+}
+
+.entry-body ul,
+.entry-body ol {
+  list-style: none;
+}
+
+.entry-body li {
+  position: relative;
+  padding-left: 1.05em;
+  text-wrap: pretty;
+}
+
+.entry-body li + li {
+  margin-top: var(--space-1);
+}
+
+.entry-body ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 0.55em;
+  border-top: 1.25pt solid var(--accent);
+}
+
+.entry-body ul ul > li::before {
+  width: 0.35em;
+  border-top: 0.75pt solid var(--ink-muted);
+}
+
+.entry-body ul ul,
+.entry-body ul ol,
+.entry-body ol ul,
+.entry-body ol ol {
+  margin-top: var(--space-1);
+  color: var(--ink-secondary);
+}
+
+.entry-body li > p {
+  display: inline; /* marked wraps tight list items in <p> */
+}
+
+/* --------------------------------------------------------------------------
+   Timeline — a thin spine in the gutter with a brick dot per entry
+   -------------------------------------------------------------------------- */
+
+.section--timeline .entry {
+  position: relative;
+  padding-bottom: 7mm;
+}
+
+.section--timeline .entry:last-child {
+  padding-bottom: 0;
+}
+
+.section--timeline .entry::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--aside) + var(--gutter) / 2);
+  top: 0;
+  bottom: 0;
+  border-left: 0.75pt solid var(--rule-strong);
+  transform: translateX(-50%);
+}
+
+.section--timeline .entry:first-child::before {
+  top: 0.55em;
+}
+
+.section--timeline .entry:last-child::before {
+  bottom: auto;
+  height: 0.6em;
+}
+
+.section--timeline .entry::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--aside) + var(--gutter) / 2);
+  /* centred on the first line of the 16pt serif entry title */
+  top: calc(var(--text-entry) * var(--leading-tight) / 2);
+  width: 9pt;
+  height: 9pt;
+  border: 2pt solid var(--paper);
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+/* --------------------------------------------------------------------------
+   Compact sections (Skills) — slash-separated wrapping lists
+   -------------------------------------------------------------------------- */
+
+.section--compact .entry-body ul {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: var(--space-1);
+}
+
+.section--compact .entry-body li {
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.section--compact .entry-body li::before {
+  content: none;
+}
+
+/* Separator trails its own item, so it can never lead a wrapped line. */
+.section--compact .entry-body li:not(:last-child)::after {
+  content: "/";
+  margin: 0 0.6em;
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   Narrow screens — the sheet gives up its desk, the grid stacks
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 40rem) {
+  html,
+  body {
+    background: var(--paper);
+  }
+
+  .sheet {
+    margin: 0;
+    padding: var(--space-5) var(--space-4) var(--space-6);
+    box-shadow: none;
+  }
+
+  .contacts li:first-child {
+    flex-basis: 100%;
+  }
+
+  .contacts {
+    justify-content: flex-start;
+  }
+
+  .name {
+    font-size: 40pt;
+  }
+
+  .headline {
+    padding-left: 10mm;
+    font-size: 15pt;
+  }
+
+  .headline::before {
+    font-size: 38pt;
+  }
+
+  .section-title {
+    font-size: 18pt;
+  }
+
+  .entry {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-2);
+  }
+
+  .entry-period,
+  .entry-links {
+    padding-top: 0;
+    text-align: left;
+  }
+
+  .entry-period-part {
+    display: inline;
+  }
+
+  .entry-period-part + .entry-period-part::before {
+    content: " ";
+  }
+
+  .entry-links {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  /* Timeline spine moves to the left edge of the stacked entry. */
+  .section--timeline .entry {
+    padding-left: 5mm;
+  }
+
+  .section--timeline .entry::before,
+  .section--timeline .entry::after {
+    left: 0;
+  }
+
+  .section--timeline .entry::after {
+    top: calc(var(--text-sm) * 1.45 / 2);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Print — identical design; only page margins, pagination, hidden chrome
+   -------------------------------------------------------------------------- */
+
+@page {
+  size: A4;
+  margin: 15mm 16mm 16mm;
+  background: #faf6ee; /* paper tone into the page margins too */
+
+  /* Declaring an empty margin box on an edge turns off Chromium's own
+     print-dialog header (date, title) or footer (URL, page number) there. */
+  @top-left {
+    content: "";
+  }
+
+  @bottom-left {
+    content: "";
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: var(--paper);
+  }
+
+  /* @page supplies the margins; the sheet's screen padding must not
+     double them. */
+  .sheet {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  /* Pagination. Headings never end a page; a list item never splits. An
+     entry itself may split between list items, so a long section can start
+     at the foot of a page instead of leaving an empty band there. */
+  .section-head,
+  .entry-header {
+    break-after: avoid;
+    break-inside: avoid;
+  }
+
+  .entry-body li {
+    break-inside: avoid;
+  }
+
+  /* The first body block stays with its heading (dated header or the
+     margin title of a titled entry). */
+  .entry-body > :first-child {
+    break-before: avoid;
+  }
+
+  /* Lists split only with two items on each side: the first two items stay
+     together, and the last item never starts a page alone. */
+  .entry-body li:first-child + li,
+  .entry-body li:last-child:not(:first-child) {
+    break-before: avoid;
+  }
+
+  .entry-body p,
+  .entry-body li {
+    orphans: 3;
+    widows: 3;
+  }
+}
