@@ -176,19 +176,24 @@ The `.sheet` is 210 mm wide (`max-width: 100%`), with screen padding of 15 / 16 
 
 ## Print & Parity
 
-`@page { size: A4; margin: 15mm 16mm 16mm; background: #faf6ee }`. The PDF is the browser's print of the page (Ctrl/Cmd+P → Save as PDF); no PDF is generated or published. Print media changes only margins and pagination; it never introduces a different layout.
+The PDF is the browser's print of the page (Ctrl/Cmd+P → Save as PDF); no PDF is generated or published. Every rule below lives in `@page` or `@media print`, so the screen is untouched. Print keeps the screen's fonts, sizes, colours, and layout. It changes only the page margins, the page background, and pagination, and each engine gets the best result it can actually print, verified with each engine's default dialog settings:
 
-- `html { print-color-adjust: exact }`, so the paper tone, `<mark>` highlights, and timeline dots print even when the dialog's "Background graphics" option is off.
-- `@page` declares empty `@top-left` and `@bottom-left` margin boxes, which suppresses Chromium's print-dialog header (date, title) and footer (URL, page number).
-- `.sheet` drops its width, margin, padding, and shadow so the margins are not applied twice.
-- Section heads and entry headers use `break-inside: avoid` and `break-after: avoid`, so a heading never ends a page.
-- The first body block uses `break-before: avoid`, so it stays with its header or margin heading.
-- List items never split (`break-inside: avoid`; `orphans`/`widows: 3`).
-- Lists break only with at least two items on each side: the second item and the last item (in lists of two or more) carry `break-before: avoid`. No bullet starts a page alone.
-- Entries themselves are not unbreakable. A long section can start at the foot of a page instead of leaving an empty band.
+| Engine | Margins | Paper | Browser header/footer |
+|---|---|---|---|
+| Chrome, Firefox (`@supports (box-decoration-break: clone)`) | `@page { margin: 0 }`; `.sheet` pads 15 / 16 / 16 mm with `box-decoration-break: clone`, so every page gets them | Full-bleed #faf6ee from a fixed `body::before` layer, which repeats on every page, including below the content on the last page | None: a zero page margin leaves them no room |
+| Safari / WebKit (no block `clone`) | `@page { margin: 15mm 16mm 16mm }` | White (`--paper: #fff`). WebKit ignores `@page { background }` and clips painting in the page margins, so a tone would print as a cream rectangle in a white frame | Safari's own, inside the white margin, never over content. Turned off only by the dialog's "Print headers and footers" |
+
+- `html { print-color-adjust: exact }` prints the paper tone, `<mark>` highlights, and timeline dots even when "Background graphics" is off.
+- Empty `@top-left` / `@bottom-left` margin boxes suppress Chromium's header/footer whenever page margins are non-zero.
+- WebKit lays a printed page out at 1.25× its point width, so a CSS px prints as 0.8 pt. `html { zoom: 0.9375 }` (WebKit only, detected by `hanging-punctuation`) brings pt sizes back to true size. Line heights round to whole px there, about 3 % tighter.
+- `body { hanging-punctuation: none }` in print: WebKit otherwise hangs a leading `[` or the headline quote mark out into the marker gap or the margin.
+- Pagination uses only mechanisms all three engines honour, since Gecko and WebKit ignore `break-before/after: avoid`:
+  - Entries print as blocks instead of a grid, because Gecko never splits a grid item. The margin column is an in-flow box as tall as the entry's opening (`--entry-keep`: 42 mm, or 24 mm in sections with titled entries) with an equal negative bottom margin, so it takes no room but travels with the opening.
+  - Keep-with-next is a `break-inside: avoid` box with a bottom "reach" (padding X plus margin −X). A section title reaches into its first entry's opening, and the first and second-to-last list items reach over the next two lines, so no heading ends a page and no bullet starts or ends a page alone.
+  - The section head prints as a one-row grid, because Gecko lets a flex container's padding run onto the next page.
 - Links keep their colours, so they stay identifiable and clickable in the PDF.
 
-The current build is 4 A4 pages.
+The current build prints 4 A4 pages in Chrome, Firefox, and Safari.
 
 ## Elevation & Depth
 
@@ -254,12 +259,13 @@ Text column: a 16pt serif entry name (linked names stay in ink and turn brick on
 - **Do** keep the brick accent for the editorial ornaments and margin-note links listed above.
 - **Do** quiet repeated in-page references. They are wayfinding, not citations.
 - **Do** keep the pagination rules (heading with first block, no lone first or last bullet) whenever the layout changes.
-- **Do** print the page from the browser (Save as PDF) and look at every page after any spacing change.
+- **Do** print the page in Chrome, Safari, and Firefox (Save as PDF, default settings) and look at every page after any spacing change.
 
 ### Don't:
 
 - **Don't** add photos, icons, skill bars, badges, cards, or decorative backgrounds.
 - **Don't** add a second accent colour or tint section bands.
-- **Don't** make whole entries or sections `break-inside: avoid`. That pushes long sections to the next page and leaves empty bands.
+- **Don't** make whole entries or sections `break-inside: avoid`. That pushes long sections to the next page and leaves empty bands. Keep-with-next uses bounded reach boxes instead.
+- **Don't** rely on `break-before/after: avoid` or `@page { background }`. Only Chromium honours them.
 - **Don't** set the about lead in narrow multi-columns; Korean phrases split badly.
-- **Don't** create a print-only layout. Print CSS handles `@page` and pagination only.
+- **Don't** create a print-only layout. Print CSS handles page margins, page background, and pagination only.

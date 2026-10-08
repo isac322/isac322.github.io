@@ -21,7 +21,7 @@ A single-page curriculum vitae that reads well on screen and prints from the bro
 ## Operating Context
 
 - Opened from a link in a job application, LinkedIn, or GitHub profile; also attached as a PDF saved from the browser's print dialog.
-- Printed or saved to PDF by reviewers with the browser's print dialog, so print must never depend on a custom button or a separate PDF file, and must stay faithful with default dialog settings ("Background graphics" off, headers and footers on).
+- Printed or saved to PDF by reviewers with the browser's print dialog, so print must never depend on a custom button or a separate PDF file. It must stay faithful in Chrome, Safari, and Firefox with default dialog settings ("Background graphics" off, headers and footers on): real margins on every page, no partial background, no stranded headings. Safari prints on white with its own header/footer in the margin; CSS cannot change that.
 - Content is maintained by the owner in one data file and rebuilt; design and content change independently.
 
 ## Capabilities and Constraints

@@ -211,8 +211,8 @@
     "page": [
       {
         "name": "a4-sheet",
-        "value": "size A4; margin 15mm 16mm 16mm; background #faf6ee",
-        "purpose": "@page geometry; .sheet mirrors it as width 210mm + matching padding, so the 178mm content box is shared by screen and print."
+        "value": "size A4; margins 15mm 16mm 16mm (screen: .sheet padding; print: .sheet padding with box-decoration-break clone in Chromium/Gecko, @page margin in WebKit)",
+        "purpose": "A4 geometry; .sheet is 210mm wide with 15/16/16mm padding, so the 178mm content box is shared by screen and every printed page."
       },
       {
         "name": "editorial-grid",
@@ -318,7 +318,7 @@
       },
       {
         "name": "The One Source, Two Outputs Rule",
-        "body": "Screen sheet and printed page share every token; the PDF is the browser's print of the page, never a generated file. Print CSS only sets @page and paginates. html uses print-color-adjust: exact so paper tone, marks, and dots print with Background graphics off, and @page declares empty @top-left/@bottom-left margin boxes to suppress the browser's print header and footer.",
+        "body": "Screen sheet and printed page share every token; the PDF is the browser's print of the page, never a generated file. Print CSS touches only page margins, page background, and pagination, and is verified in Chrome, Safari, and Firefox at default dialog settings. Chromium/Gecko: @page margin 0, cloned sheet padding, full-bleed paper from a fixed body::before. WebKit: @page margins, white paper, zoom 0.9375 to undo its 0.8pt-per-px print scale. html uses print-color-adjust: exact; empty @top-left/@bottom-left margin boxes suppress Chromium's header/footer. Keep-with-next uses break-inside: avoid reach boxes, since only Chromium honours break-before/after: avoid.",
         "section": "layout"
       },
       {
