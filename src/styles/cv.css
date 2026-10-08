@@ -665,7 +665,6 @@ strong {
 @page {
   size: A4;
   margin: 15mm 16mm 16mm;
-  background: #faf6ee; /* paper tone into the page margins too */
 
   /* Declaring an empty margin box on an edge turns off Chromium's own
      print-dialog header (date, title) or footer (URL, page number) there. */
@@ -678,14 +677,21 @@ strong {
   }
 }
 
+/* Full-bleed paper where the sheet's padding repeats on every printed page
+   (box-decoration-break: clone — Chromium, Gecko): the page drops its
+   margins and the sheet's padding draws them instead, on paper tone. */
+@supports (box-decoration-break: clone) {
+  @page {
+    margin: 0;
+  }
+}
+
 @media print {
   html,
   body {
     background: var(--paper);
   }
 
-  /* @page supplies the margins; the sheet's screen padding must not
-     double them. */
   .sheet {
     width: auto;
     margin: 0;
@@ -693,30 +699,123 @@ strong {
     box-shadow: none;
   }
 
-  /* Pagination. Headings never end a page; a list item never splits. An
-     entry itself may split between list items, so a long section can start
-     at the foot of a page instead of leaving an empty band there. */
+  @supports (box-decoration-break: clone) {
+    /* A fixed box repeats on every printed page, so the tone reaches the
+       sheet edge and also fills the last page below the content. */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: var(--paper);
+    }
+
+    .sheet {
+      padding: var(--page-margin-top) var(--page-margin-x) var(--page-margin-bottom);
+      box-decoration-break: clone;
+    }
+  }
+
+  /* WebKit can't repeat the padding, so it keeps the @page margins — and
+     prints them white. A tone stopping at the content edge would look like
+     a pasted-on rectangle, so print on plain white instead. */
+  @supports not (box-decoration-break: clone) {
+    :root {
+      --paper: #fff;
+    }
+  }
+
+  /* WebKit lays a printed page out 1.25x its width in points and scales it
+     to fit, so a CSS px prints at 0.8pt instead of 0.75pt and everything
+     comes out 6.7% too large. Undo that so pt sizes print true. */
+  @supports (hanging-punctuation: first) and (not (box-decoration-break: clone)) {
+    html {
+      zoom: 0.9375;
+    }
+  }
+
+  /* WebKit is the only engine with hanging-punctuation: it pushes a leading
+     "[" or the headline's quote mark out into the list-marker gap or the
+     white page margin. Print the punctuation in place, as Chromium does. */
+  body {
+    hanging-punctuation: none;
+  }
+
+  /* Pagination. A heading never ends a page and a list item never splits;
+     an entry may split between its list items, so a long section can start
+     at the foot of a page instead of leaving an empty band there.
+
+     Gecko and WebKit ignore break-before/after: avoid, so each "keep with
+     next" is built from break-inside: avoid instead: the box gets a bottom
+     reach into what follows, and an equal negative margin pulls that
+     content back up. Nothing moves on the page, but a break inside the
+     reach would split the box, so the box moves to the next page. */
+
+  /* The opening of an entry that never splits: a heading block with two
+     body lines, or a margin title with its first two items. */
+  .section {
+    --entry-keep: 42mm;
+  }
+
+  .section:has(.entry--titled) {
+    --entry-keep: 24mm;
+  }
+
+  /* Gecko never splits a grid item across pages, so a long entry would jump
+     whole to the next page; the entry is a plain block instead. The margin
+     column becomes its first box, as tall as the entry's opening and
+     pulled back to take no room — same geometry, and the margin note
+     travels with the opening when that moves to the next page. */
+  .entry {
+    display: block;
+  }
+
+  .entry-aside,
+  .entry-main {
+    display: flow-root; /* grid items were formatting roots too */
+  }
+
+  .entry-aside {
+    width: var(--aside);
+    height: var(--entry-keep);
+    margin-bottom: calc(-1 * var(--entry-keep));
+  }
+
+  .entry-main {
+    margin-left: calc(var(--aside) + var(--gutter));
+  }
+
+  /* Gecko lets a flex container's padding run onto the next page despite
+     break-inside: avoid; a one-row grid lays out the title and intro the
+     same way and keeps it. */
+  .section-head {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+  }
+
   .section-head,
-  .entry-header {
-    break-after: avoid;
+  .entry-aside,
+  .entry-header,
+  .entry-body li,
+  .section--compact .entry {
     break-inside: avoid;
   }
 
-  .entry-body li {
-    break-inside: avoid;
+  /* A section title reaches over the 6mm gap into its first entry's
+     opening. */
+  .section-head {
+    padding-bottom: calc(6mm + var(--entry-keep));
+    margin-bottom: calc(-1 * (6mm + var(--entry-keep)));
   }
 
-  /* The first body block stays with its heading (dated header or the
-     margin title of a titled entry). */
-  .entry-body > :first-child {
-    break-before: avoid;
-  }
-
-  /* Lists split only with two items on each side: the first two items stay
-     together, and the last item never starts a page alone. */
-  .entry-body li:first-child + li,
-  .entry-body li:last-child:not(:first-child) {
-    break-before: avoid;
+  /* Lists split only with two items on each side: the first item takes
+     the next, and the last item never starts a page alone. (Not the inline
+     skills items: Gecko counts an inline's padding as page overflow.) */
+  .section:not(.section--compact) .entry-body li:first-child,
+  .section:not(.section--compact) .entry-body li:nth-last-child(2) {
+    padding-bottom: calc(var(--space-1) + 2lh);
+    margin-bottom: calc(-1 * (var(--space-1) + 2lh));
   }
 
   .entry-body p,
